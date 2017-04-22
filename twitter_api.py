@@ -15,18 +15,20 @@ consumer_secret = ""
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
-api = tweepy.API(auth) #to proswpiko api
+api = tweepy.API(auth) #personal api
 
-name1=raw_input('Enter first profile: ')
+name1=raw_input('Enter first profile: ') 
 name2=raw_input('Enter second profile: ')
 
-user1 = api.get_user(name1)
-user2 = api.get_user(name2)
+user1 = api.get_user(name1) # get username of first profile
+user2 = api.get_user(name2) # get username of second profile
 
 print ('\nProfile:')
 print('@' + user1.name)
 
-tweets = user1.statuses_count
+tweets = user1.statuses_count # calculate tweets of first profile
+
+#examine multiple occasions, could have embody them to different functions differentiated the two users 
 
 if tweets <= 9999:
 	print ('TWEETS: ' + str(tweets))
@@ -56,7 +58,7 @@ if tweets >= 1000000000 and tweets <= 9999999999:
 	print  ('TWEETS: ' + tweets.replace( '.' , '.' )[:-9] + '.' + tweets[1:3] + 'B')
 
 
-following = user1.friends_count
+following = user1.friends_count # calculate sum of user's 1 following
 
 if following <= 9999:
 	print ('FOLLOWING: ' + str(following))
@@ -85,7 +87,7 @@ if following >= 1000000000 and following <= 9999999999:
 	following = str(following)
 	print('FOLLOWING: ' + following.replace( '.' , '.' )[:-9] + '.' + following[1:3] + 'B')
 
-followers = user1.followers_count
+followers = user1.followers_count #calculate followers of first profile
 
 if followers <= 9999:
 	print ('FOLLOWERS: ' + str(followers))
@@ -114,7 +116,7 @@ if followers >= 1000000000 and followers <= 9999999999:
 	followers = str(followers)
 	print('FOLLOWERS: ' + followers.replace( '.' , '.' )[:-9] + '.' + followers[1:3] + 'B')
 
-likes = user1.favourites_count
+likes = user1.favourites_count #calculate likes of user 1, first profile
 
 if likes <= 9999:
 	print ('LIKES: ' + str(likes) + '\n')
@@ -144,7 +146,7 @@ if likes >= 1000000000 and likes <= 9999999999:
 	print('LIKES: ' + likes.replace( '.' , '.' )[:-9] + '.' + likes[1:3] + 'B' + '\n')
 
 
-print ('Profile:')
+print ('Profile:')		#doing the same for the second profile
 print('@' + user2.name)
 
 tweets=user2.statuses_count
@@ -264,7 +266,7 @@ if likes >= 1000000000 and likes <= 9999999999:
 	likes = str(likes)
 	print('LIKES: ' + likes.replace( '.' , '.' )[:-9] + '.' + likes[1:3] + 'B' + '\n')
 
-score1 = 0
+score1 = 0		#calculate the score between those 2 profiles, according to statics we have collect 
 score2 = 0
 if user1.statuses_count < user2.statuses_count:
 	score2 = score2 + 1

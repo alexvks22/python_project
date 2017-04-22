@@ -1,9 +1,9 @@
-date  = input('Dwse thn hmeromhnia:')
-month = raw_input("Dwse ton mhna se greeklish h se agglika:")
-year = input('Dwse thn xronia:')
+date  = input('Enter date:')
+month = raw_input("Enter month in greeklish or just english:")
+year = input('Enter year:')
 year_string = str(year)
 
-#kathe minas ehei ton diko tou, monadiko, kwdiko
+#each month has its own, unique tag
 if month == 'December' or month =='december' or month=='dekemvrios' or month=='Dekemvrios' or month == "dekembrios" or month == "Dekembrios":
     month_code=6
 
@@ -42,7 +42,7 @@ if month == 'November' or month=='november' or month== 'noemvrios' or month == "
 
 
 
-if year_string[:2] == '16': # analoga ta 2 prwta psifia, o kathe xronos antiproswpevetai apo ena kwdiko
+if year_string[:2] == '16': # according to the first 2 digits, each year has its own tag
     year_code = (6 + year%100 + (year%100)/4) % 7
 
 elif year_string[:2]== '17':
@@ -68,7 +68,7 @@ else:
 
 day = (year_code+month_code+date) % 7
 
-if year%4 == 0:  #ean to etos einai disekto
+if year%4 == 0:  #check for leap year
     day = day - 1
     if day == 0:
         print "Savvato"
@@ -84,7 +84,7 @@ if year%4 == 0:  #ean to etos einai disekto
         print "Pempti"
     else:
         print "Paraskevi"
-else:                   #gia tis ypoloipes xronologies, pou den einai disektes
+else:                   #non leap year
     if day == 0:
         print "Savvato"
     elif day == 1:
